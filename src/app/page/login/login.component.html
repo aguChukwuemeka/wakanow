@@ -1,0 +1,104 @@
+<main class="bg-cyan-100 h-full">
+  <div
+    class="container"
+    fxLayout="row"
+    fxLayout.xs="column"
+    fxLayoutAlign="center"
+  >
+    <div class="ml-[10%] mt-[15%] w-2/4">
+      <img src="assets/wakanow-logo.png" alt="wakanow logo" />
+    </div>
+    @if(signInForm){
+    <div class="h-screen w-screen" fxLayout="row" fxLayoutAlign="center center">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()">
+        <mat-card>
+          <mat-card-content>
+            <h3 class="text-base login-text font-semibold subpixel-antialiased">Login</h3>
+            <div fxLayout="column">
+              <mat-form-field appearance="outline">
+                <mat-label>Username</mat-label>
+                <input matInput type="text" id="username" formControlName="username" required />
+                <!-- <mat-hint>Hint</mat-hint> -->
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput type="password" id="password" formControlName="password" required />
+                <!-- <mat-hint>Hint</mat-hint> -->
+              </mat-form-field>
+            </div>
+          </mat-card-content>
+          <div class="py-4 mx-auto">
+            <button class="w-64" mat-raised-button color="primary"type="submit" [disabled]="!loginForm.valid">Login</button>
+          </div>
+          <a class="ml-auto mr-4 py-2 cursor-pointer text-blue-400"(click)=onSignInForm()>
+            {{signInForm ? 'Do not have an account...' : 'Already have an account...'}}
+          </a>
+        </mat-card>
+      </form>
+    </div>
+    }@else {
+    <div class="h-screen w-screen" fxLayout="row" fxLayoutAlign="center center">
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmitSignForm()">
+        <mat-card>
+          <mat-card-content>
+            <h3 class="text-base login-text font-semibold subpixel-antialiased">Sign Up</h3>
+            <div fxLayout="column">
+              <div fxLayout="row" fxLayoutGap="20">
+              <mat-form-field appearance="outline">
+                <mat-label>First Name</mat-label>
+                <input matInput type="text" id="first_name" formControlName="first_name" required />
+                <!-- <mat-hint>Hint</mat-hint> -->
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Last Name</mat-label>
+                <input matInput type="text" id="last_name" formControlName="last_name" required />
+                <!-- <mat-hint>Hint</mat-hint> -->
+              </mat-form-field>
+            </div>
+
+
+              <div fxLayout="row" fxLayoutGap="20">
+                <mat-form-field appearance="outline">
+                  <mat-label>Username</mat-label>
+                  <input matInput type="text" id="username" formControlName="username" required />
+                  <!-- <mat-hint>Hint</mat-hint> -->
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Password</mat-label>
+                  <input matInput type="password" id="password" formControlName="password" required />
+                  <!-- <mat-hint>Hint</mat-hint> -->
+                </mat-form-field>
+              </div>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" id="email" formControlName="email" required />
+                <!-- <mat-hint>Hint</mat-hint> -->
+              </mat-form-field>
+              <!-- <mat-form-field appearance="outline">
+                  <mat-label>Avatar</mat-label>
+                  <input type="file" id="avatar" formControlName="avatar" (change)="onAvatarChange($event)" accept="image/*" />
+                  @if(avatarPreview){
+                    <img [src]="avatarPreview" alt="Avatar Preview" style="max-width: 100px; max-height: 100px;">
+                  }
+                  <mat-hint>Hint</mat-hint>
+              </mat-form-field> -->
+            </div>
+          </mat-card-content>
+          <div class="py-4 ml-auto mr-4" fxLayoutGap="10">
+            <button mat-stroked-button color="warn">cancel</button>
+            <button mat-raised-button color="primary" type="submit" [disabled]="!signupForm.valid">Sign Up</button>
+          </div>
+          <a class="ml-auto mr-4 py-2 cursor-pointer text-blue-400" (click)="onSignInForm()">
+            {{signInForm ? 'Do not have an account...' : 'Already have an account...'}}
+          </a>
+        </mat-card>
+      </form>
+    </div>
+    }
+
+
+  </div>
+</main>
