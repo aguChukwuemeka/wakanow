@@ -75,6 +75,7 @@ export class HomeComponent {
   toggleApproval(user: any) {
     user.approved = !user.approved;
     this.users = [...this.users];
+    sessionStorage.setItem('admin', JSON.stringify(this.users || []));
     console.log('toggle :', this.users);
   }
 

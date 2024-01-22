@@ -154,24 +154,40 @@ export class LoginComponent {
       console.log('Admin', admin);
       console.log('User', user);
 
-       if (user && user.password === enteredPassword && admin && admin.admin) {
-         this.isAdmin = true;
-         sessionStorage.setItem('isAdmin', JSON.stringify(this.isAdmin));
-       } else if (user && user.password === enteredPassword && user.approved) {
-         console.log('Login successful:', user);
-         this.loginForm.reset();
-         this._snackBar.openSuccessSnackBar(
-           'User successfully logged in',
-           'Success'
-         );
-         this.router.navigate(['/home']);
-       } else {
-         console.error('Invalid credentials or unapproved user');
-         this._snackBar.openWarningSnackBar(
-           'Invalid credentials or unapproved user',
-           'Caution'
-         );
-       }
+      if (
+        admin &&
+        enteredUsername === admin.username &&
+        enteredPassword === admin.password
+      ) {
+        console.log('Successfully logged in as Admin:', admin);
+        this.isAdmin = true;
+        sessionStorage.setItem('isAdmin', JSON.stringify(this.isAdmin));
+        this.loginForm.reset();
+        this._snackBar.openSuccessSnackBar(
+          'Successfully logged in as Admin',
+          'Success'
+        );
+        this.router.navigate(['/home']);
+      } else if (
+        user &&
+        enteredUsername === user.username &&
+        enteredPassword === user.password &&
+        user.approved
+      ) {
+        console.log('Login successful:', user);
+        this.loginForm.reset();
+        this._snackBar.openSuccessSnackBar(
+          'User successfully logged in',
+          'Success'
+        );
+        this.router.navigate(['/home']);
+      } else {
+        console.error('Invalid credentials or unapproved user');
+        this._snackBar.openWarningSnackBar(
+          'Invalid credentials or unapproved user',
+          'Caution'
+        );
+      }
 
       // this.userService.getUserByUsername(enteredUsername).subscribe(
       //   (user) => {
@@ -199,6 +215,7 @@ export class LoginComponent {
       //     this._snackBar.openFailureSnackBar(error, 'Failed');
       //   }
       // );
+    
     }
   }
 }

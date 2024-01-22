@@ -25,3 +25,24 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+Default admin info :
+    email: 'agusmart94@gmail.com',
+    first_name: 'emmanuel',
+    last_name: 'agu',
+    username: 'aguChukwuemeka',
+    password: '1234',
+    approved: true,
+    admin: true,
+    id: '869',
+    createdAt: '2024-01-21T13:51:22.652Z',
+
+What you were able to do so far :
+
+- Creating Admin Section
+- User-List Section
+- Login Page
+- Sign-Up Page
+- get & set sessessionStorage
+- roles amd Permission
